@@ -142,9 +142,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\Dispo.cs" />
+    <Compile Include="Models\Dispos.cs" />
     <Compile Include="Models\Navigant.cs" />
     <Compile Include="Models\Navigants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DisposViewModel.cs" />
     <Compile Include="ViewModels\NavigantsViewModel.cs" />
     <Compile Include="ViewModels\NavigantViewModel.cs" />
   </ItemGroup>

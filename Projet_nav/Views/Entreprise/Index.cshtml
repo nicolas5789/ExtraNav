@@ -38,3 +38,23 @@
         </tr>
     }
 </table>
+
+<p>Affichage liste des dispo</p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Id du Navigant</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+    </tr>
+    @foreach (var dispo in (IEnumerable<Projet_nav.Models.Dispo>)ViewData["listeDispos"])
+    {
+        <tr>
+            <td>@dispo.Id</td>
+            <td>@dispo.IdNavigant</td>
+            <td>@dispo.DateDeDebut.ToShortDateString()</td>
+            <td>@dispo.DateDeFin.ToShortDateString()</td>
+        </tr>
+    }
+</table>

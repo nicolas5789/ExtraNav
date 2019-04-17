@@ -26,7 +26,7 @@ namespace Projet_nav.Models
                     DateDeCreation = Convert.ToDateTime(reader.GetString("dateDeCreation")),
                     DateDeModification = Convert.ToDateTime(reader.GetString("dateDeModification")),
                     Experience = Convert.ToInt32(reader.GetString("experience")),
-                    Telephone = reader.GetString("nom"),
+                    Telephone = reader.GetString("telephone"),
                     Email = reader.GetString("email"),
                     Note = Convert.ToInt32(reader.GetString("note")) 
                 });

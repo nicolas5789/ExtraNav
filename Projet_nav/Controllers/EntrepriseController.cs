@@ -15,6 +15,9 @@ namespace Projet_nav.Controllers
             {
                 listeNavigants = Models.Navigants.listeNavigants()
             };
+
+            ViewData["listeDispos"] = Models.Dispos.listeDispos();
+            
             return View(vm);
         }
     }
