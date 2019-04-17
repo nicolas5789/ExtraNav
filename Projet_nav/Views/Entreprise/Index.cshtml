@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index - Page des entreprises</h2>
+
+<h2>Disponibilité des équipages</h2>
+
+<p>Affichage liste des navigants</p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Id Fonction</th>
+        <th>Experience</th>
+        <th>Date de création</th>
+        <th>Date de modification</th>
+        <th>Téléphone</th>
+        <th>Adresse Email</th>
+        <th>Note moyenne</th>
+    </tr>
+    @foreach (var navigant in @Model.listeNavigants)
+    {
+        <tr>
+            <td>@navigant.Id</td>
+            <td>@navigant.Nom</td>
+            <td>@navigant.Prenom</td>
+            <td>@navigant.IdFonction</td>
+            <td>@navigant.Experience</td>
+            <td>@navigant.DateDeCreation</td>
+            <td>@navigant.DateDeModification</td>
+            <td>@navigant.Telephone</td>
+            <td>@navigant.Email</td>
+            <td>@navigant.Note</td>
+        </tr>
+    }
+</table>
