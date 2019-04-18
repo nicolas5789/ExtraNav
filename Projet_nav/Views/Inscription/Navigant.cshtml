@@ -9,34 +9,34 @@
     <table>
         <tr>
             <td><label>Votre Nom</label></td>
-            <td><input type="text" name="nom" required /></td>
+            <td><input type="text" name="nom"  /></td>
         </tr>
         <tr>
             <td><label>Votre Prénom</label></td>
-            <td><input type="text" name="prenom" required /></td>
+            <td><input type="text" name="prenom"  /></td>
         </tr>
         <tr>
             <td><label>Votre fonction</label><br /></td>
             <td>
-                <select name="fonction" required>
+                <select name="fonction" >
                     <option value="1">Capitaine</option>
                     <option value="2">Matelot</option>
                 </select>
             </td>
         </tr>
-        <tr>number 
+        <tr>
             <td><label>Votre Expérience</label></td>
-            <td><input type="number" name="experience" min="0" max="40" required /></td>
+            <td><input type="number" name="experience" min="0" max="40"  /></td>
         </tr>
         <tr>
             <td><label>Votre Téléphone</label></td>
-            <td><input type="tel" name="telephone" required /></td>
+            <td><input type="tel" name="telephone"  /></td>
         </tr>
         <tr>
             <td><label>Votre Email</label></td>
-            <td><input type="email" name="email" required /></td>
+            <td><input type="email" name="email"  /></td>
         </tr>
     </table>
     <input type="submit" value="Créer mon compte" />
 </form>
-
+<p>@ViewData["messageInscriptionNav"]</p>

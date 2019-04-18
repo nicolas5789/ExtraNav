@@ -25,16 +25,35 @@ namespace Projet_nav.Controllers
             int telephone;
             string email;
 
-            nom = nvc["nom"];
-            prenom = nvc["prenom"];
-            fonction = Convert.ToInt32(nvc["fonction"]);
-            experience = Convert.ToInt32(nvc["experience"]);
-            telephone = Convert.ToInt32(nvc["telephone"]);
-            email = nvc["email"];
+
+            if(!String.IsNullOrEmpty(nvc["nom"]) &&
+               !String.IsNullOrEmpty(nvc["prenom"]) &&
+               !String.IsNullOrEmpty(nvc["fonction"]) &&
+               !String.IsNullOrEmpty(nvc["experience"]) && 
+               !String.IsNullOrEmpty(nvc["telephone"]) && 
+               !String.IsNullOrEmpty(nvc["email"]))
+            {
+                ViewData["messageInscriptionNav"] = "Votre compte a bien été créé";
+
+                nom = nvc["nom"];
+                prenom = nvc["prenom"];
+                fonction = Convert.ToInt32(nvc["fonction"]);
+                experience = Convert.ToInt32(nvc["experience"]);
+                telephone = Convert.ToInt32(nvc["telephone"]);
+                email = nvc["email"];
+
+            } else
+            {
+                ViewData["messageInscriptionNav"] = "Tous les champs doivent être complétés";
+            }
+
+
+
+            
 
             //ajouter controle des valeurs et renvoi si incorrect
-
-            return View();   
+            
+            return View("~/Views/Inscription/Navigant.cshtml");   
         }
     }
 }
