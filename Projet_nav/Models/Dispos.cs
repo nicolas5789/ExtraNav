@@ -13,7 +13,7 @@ namespace Projet_nav.Models
             List<Dispo> listeDispos = new List<Dispo>();
 
             MySqlCommand cmd = BddConnect().CreateCommand();
-            cmd.CommandText = "select * from dispos";
+            cmd.CommandText = "SELECT * from dispos inner join navigants, fonctions where dispos.idNavigant = navigants.id and navigants.idFonction = fonctions.id";
             MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -23,7 +23,11 @@ namespace Projet_nav.Models
                     Id = Convert.ToInt32(reader.GetString("id")),
                     IdNavigant = Convert.ToInt32(reader.GetString("idNavigant")),
                     DateDeDebut = Convert.ToDateTime(reader.GetString("dateDeDebut")),
-                    DateDeFin = Convert.ToDateTime(reader.GetString("dateDeFin"))
+                    DateDeFin = Convert.ToDateTime(reader.GetString("dateDeFin")),
+                    Fonction = reader.GetString("fonction"),
+                    Nom = reader.GetString("nom"),
+                    Prenom = reader.GetString("prenom"),
+                    Note = Convert.ToInt32(reader.GetString("note")) 
                 });
             }
             return listeDispos;

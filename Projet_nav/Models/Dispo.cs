@@ -9,7 +9,11 @@ namespace Projet_nav.Models
     {
         public int Id { get; set; }
         public int IdNavigant { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
         public DateTime DateDeDebut { get; set; }
         public DateTime DateDeFin { get; set; }
+        public int Note { get; set; }
+        public string Fonction { get; set; }
     }
 }
