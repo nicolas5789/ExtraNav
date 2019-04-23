@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,7 +23,7 @@ namespace Projet_nav.Controllers
             string prenom;
             int fonction;
             int experience;
-            int telephone;
+            string telephone;
             string email;
 
 
@@ -33,25 +34,32 @@ namespace Projet_nav.Controllers
                !String.IsNullOrEmpty(nvc["telephone"]) && 
                !String.IsNullOrEmpty(nvc["email"]))
             {
-                ViewData["messageInscriptionNav"] = "Votre compte a bien été créé";
-
                 nom = nvc["nom"];
                 prenom = nvc["prenom"];
                 fonction = Convert.ToInt32(nvc["fonction"]);
                 experience = Convert.ToInt32(nvc["experience"]);
-                telephone = Convert.ToInt32(nvc["telephone"]);
+                telephone = nvc["telephone"];
                 email = nvc["email"];
-
+                if (Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase) &&
+                    Regex.IsMatch(telephone, @"^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$", RegexOptions.IgnoreCase) &&
+                    (fonction > 0 && fonction < 3) && // A modifier si ajout de poste
+                    (experience > 0 && experience < 41)  
+                    )
+                {
+                    ViewData["messageInscriptionNav"] = "Votre compte a bien été créé";
+                    //ajout envoi vers fonction pour ajout dans bdd
+                    //ajout return vers la bonne page
+                }
+                else
+                {
+                    ViewData["messageInscriptionNav"] = "Veuillez respecter les formats demandés";
+                    //ajout renvoi vers le formulaire
+                }
             } else
             {
                 ViewData["messageInscriptionNav"] = "Tous les champs doivent être complétés";
+                //ajout renvoi vers le formulaire
             }
-
-
-
-            
-
-            //ajouter controle des valeurs et renvoi si incorrect
             
             return View("~/Views/Inscription/Navigant.cshtml");   
         }
