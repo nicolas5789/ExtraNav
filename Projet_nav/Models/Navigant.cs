@@ -16,6 +16,7 @@ namespace Projet_nav.Models
         public DateTime DateDeModification { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
+        public string MotDePasse { get; set; }
         public int Note { get; set; }
     }
 }

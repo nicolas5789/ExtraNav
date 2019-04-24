@@ -33,5 +33,30 @@ namespace Projet_nav.Models
             }
             return listeNavigants;
         }
+
+        public static void ajoutNavigant(Navigant cible)
+        {
+            //créer l'ajout dans la bdd
+        }
+
+        public static bool existeNavigant(Navigant cible)
+        {
+            List<Navigant> listing = listeNavigants();
+            bool existe = false;
+
+            for(int i = 0; i < listing.Count; i++)
+            {
+                if (listing[i].Email.ToLower().Contains(cible.Email.ToLower()))
+                {
+                    existe = true;
+                }
+                else if (listing[i].Telephone.Contains(cible.Telephone))
+                {
+                    existe = true;
+                } 
+            }
+            return existe;
+        }
+        
     }
 }
