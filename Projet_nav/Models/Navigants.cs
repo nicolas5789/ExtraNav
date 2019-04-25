@@ -34,9 +34,21 @@ namespace Projet_nav.Models
             return listeNavigants;
         }
 
-        public static void ajoutNavigant(Navigant cible)
+        public static void ajoutNavigant(Navigant cible) //CREATE
         {
-            //créer l'ajout dans la bdd
+            //créer hashage du mdp et sécurisation injection html et sql
+
+            MySqlCommand cmd = BddConnect().CreateCommand();
+            cmd.CommandText = "INSERT INTO navigants(nom, prenom, idFonction, experience, dateDeCreation, dateDeModification, telephone, email, motDePasse, note) VALUES(@nom, @prenom, @idFonction, @experience, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @telephone, @email, @motDePasse, @note )";
+            cmd.Parameters.AddWithValue("@nom", cible.Nom);
+            cmd.Parameters.AddWithValue("@prenom", cible.Prenom);
+            cmd.Parameters.AddWithValue("@idFonction", cible.IdFonction);
+            cmd.Parameters.AddWithValue("@experience", cible.Experience);
+            cmd.Parameters.AddWithValue("@telephone", cible.Telephone);
+            cmd.Parameters.AddWithValue("@email", cible.Email);
+            cmd.Parameters.AddWithValue("@motDePasse", cible.MotDePasse);
+            cmd.Parameters.AddWithValue("@note", "0");
+            cmd.ExecuteNonQuery();
         }
 
         public static bool existeNavigant(Navigant cible)

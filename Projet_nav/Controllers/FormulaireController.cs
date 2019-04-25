@@ -65,7 +65,6 @@ namespace Projet_nav.Controllers
                         //controle si email ou tel déjà enregistré
                         if (!Models.Navigants.existeNavigant(navigantCible))
                         {
-                            ViewData["messageInscriptionNav"] = "Votre compte a bien été créé";
                             Models.Navigant nouveauNavigant = new Models.Navigant
                             {
                                 Nom = nom,
@@ -76,8 +75,10 @@ namespace Projet_nav.Controllers
                                 Email = email,
                                 MotDePasse = motDePasse
                             };
-                            
-                            //ajout envoi vers fonction pour ajout dans bdd
+
+                            Models.Navigants.ajoutNavigant(nouveauNavigant);
+
+                            ViewData["messageInscriptionNav"] = "Votre compte a bien été créé";
 
 
                             //ajout return vers la bonne page
